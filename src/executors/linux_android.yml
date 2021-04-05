@@ -11,8 +11,14 @@ parameters:
     description: Changes the resource class of the executor. Requires a support request to enable the resource_class parameter. See https://circleci.com/docs/2.0/configuration-reference/#resource_class
     type: string
     default: medium
+  ndk_version:
+    description: Changes the andriod ndk version. 
+    type: integer
+    default: 20.1.5948944
 docker:
   - image: reactnativecommunity/react-native-android
+    environment:
+      NDK_VERSION: <<parameters.ndk_version>>
 resource_class: <<parameters.resource_class>>
 environment:
   - _JAVA_OPTIONS: <<parameters.java_options>>
